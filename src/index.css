@@ -6,37 +6,37 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* School Theme */
-  --background: #f8fafc;
-  --foreground: #111827;
+  /* Bantay Biyahe — coastal logistics theme */
+  --background: #f5f8fc;
+  --foreground: #10233f;
 
   --card: #ffffff;
-  --card-foreground: #111827;
+  --card-foreground: #10233f;
 
   --popover: #ffffff;
-  --popover-foreground: #111827;
+  --popover-foreground: #10233f;
 
-  --primary: #15803d;
+  --primary: #075ea8;
   --primary-foreground: #ffffff;
 
-  --secondary: #f0fdf4;
-  --secondary-foreground: #14532d;
+  --secondary: #e7f5ff;
+  --secondary-foreground: #06477e;
 
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
+  --muted: #edf3f8;
+  --muted-foreground: #5c6f86;
 
-  --accent: #dcfce7;
-  --accent-foreground: #14532d;
+  --accent: #d9f0ff;
+  --accent-foreground: #073d70;
 
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
 
-  --border: #e5e7eb;
-  --input: #d1d5db;
-  --ring: #16a34a;
+  --border: #d9e3ee;
+  --input: #bdccdc;
+  --ring: #0b93e8;
 
-  --success: #16a34a;
-  --warning: #eab308;
+  --success: #15946b;
+  --warning: #f5a400;
   --info: #0ea5e9;
 
   --radius: 0.5rem;
@@ -52,27 +52,27 @@
   --popover: #0f172a;
   --popover-foreground: #f8fafc;
 
-  --primary: #22c55e;
-  --primary-foreground: #052e16;
+  --primary: #24aaf2;
+  --primary-foreground: #031a31;
 
-  --secondary: #13291b;
-  --secondary-foreground: #bbf7d0;
+  --secondary: #0a2c4f;
+  --secondary-foreground: #cceeff;
 
   --muted: #1c2538;
   --muted-foreground: #94a3b8;
 
-  --accent: #14532d;
-  --accent-foreground: #dcfce7;
+  --accent: #0c4776;
+  --accent-foreground: #e2f5ff;
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
   --border: #1f2937;
   --input: #374151;
-  --ring: #22c55e;
+  --ring: #24aaf2;
 
-  --success: #22c55e;
-  --warning: #facc15;
+  --success: #35d39a;
+  --warning: #ffb51b;
   --info: #38bdf8;
 }
 
@@ -165,7 +165,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #15803d;
+  background: #06477e;
 }
 
 /* Firefox */
@@ -179,6 +179,6 @@
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #22c55e;
+  background: #24aaf2;
   border: 2px solid #111827;
 }

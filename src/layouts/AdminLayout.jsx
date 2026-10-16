@@ -3,7 +3,7 @@ import adminMenus from "@/data/adminMenus";
 
 function AdminLayout({ children }) {
   return (
-    <PortalLayout menus={adminMenus} portalName="Admin Portal">
+    <PortalLayout menus={adminMenus} portalName="Bantay Biyahe">
       {children}
     </PortalLayout>
   );

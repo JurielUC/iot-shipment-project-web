@@ -5,7 +5,7 @@ import {
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import Logo from "@/assets/logos/logo.png";
+import Logo from "@/assets/logos/logo-bantay-biyahe.png";
 
 import useAuth from "@/hooks/use-auth";
 import ToastAlert from "@/utils/toastAlert";
@@ -61,7 +61,7 @@ function AppSidebar({
             <img
               src={Logo}
               alt="Logo"
-              className="h-11 w-11 rounded-lg object-contain"
+              className="h-12 w-12 rounded-xl bg-slate-950 object-contain p-1.5 shadow-sm"
             />
 
             <div>
@@ -78,7 +78,7 @@ function AppSidebar({
           <img
             src={Logo}
             alt="Logo"
-            className="h-11 w-11 rounded-lg object-contain"
+            className="h-12 w-12 rounded-xl bg-slate-950 object-contain p-1.5 shadow-sm"
           />
         )}
 

@@ -45,11 +45,11 @@ function AppHeader({
 
         <div>
           <h1 className="text-base font-semibold text-foreground sm:text-lg">
-            Dashboard
+            Shipment Control Center
           </h1>
 
           <p className="hidden text-sm text-muted-foreground sm:block">
-            Welcome back, {user.first_name}
+            Connected route operations · {user.first_name} account
           </p>
         </div>
       </div>

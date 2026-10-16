@@ -1,190 +1,35 @@
-import {
-    BarChart3,
-    BookOpen,
-    CalendarDays,
-    GraduationCap,
-    UserRoundCog,
-    Users,
-} from "lucide-react";
+import { Activity, AlertTriangle, ArrowRight, CheckCircle2, CircleDot, Cpu, MapPin, Plus, Radio, Thermometer, Truck, Weight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import AdminLayout from "@/layouts/AdminLayout";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import adminService from "@/services/adminService";
-
-import ToastAlert from "@/utils/toastAlert";
-import NoRecordsFound from "@/components/common/NoRecordsFound";
-import Loader from "@/components/common/Loader";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { alerts, deviceReadings, shipmentEvents, shipments, shipmentStats } from "@/data/mock/shipmentData";
 import appDetails from "@/utils/appDetails";
-import QuickCard from "@/components/common/QuickCard";
-import adminDashboardResponse from "@/data/mock/adminDashboardResponse";
 
-const iconMap = {
-    Users,
-    UserRoundCog,
-    GraduationCap,
-    BookOpen,
+const statStyles = { blue: "bg-sky-50 text-sky-700", green: "bg-teal-50 text-teal-700", amber: "bg-amber-50 text-amber-700", violet: "bg-indigo-50 text-indigo-700" };
+const icons = [Truck, CheckCircle2, AlertTriangle, Cpu];
+
+const AdminDashboardPage = () => {
+    const navigate = useNavigate();
+    return <><Helmet><title>Operations Overview | {appDetails().admin_metatitle}</title></Helmet><AdminLayout>
+        <div className="mx-auto max-w-[1600px] space-y-6">
+            <section className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-sm font-medium text-primary">Friday, October 16, 2026</p><h1 className="mt-1 text-3xl font-bold tracking-tight">Operations overview</h1><p className="mt-1 text-muted-foreground">Live shipment activity across the Mindoro–Batangas–Nueva Ecija route.</p></div><Button size="lg" onClick={() => navigate("/admin/shipments")}><Plus /> Register shipment</Button></section>
+            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{shipmentStats.map((item, index) => { const Icon = icons[index]; return <div key={item.title} className="rounded-2xl border bg-card p-5 shadow-sm"><div className="flex items-start justify-between"><div><p className="text-sm text-muted-foreground">{item.title}</p><p className="mt-2 text-3xl font-bold">{item.value}</p></div><div className={`rounded-xl p-3 ${statStyles[item.tone]}`}><Icon className="h-5 w-5" /></div></div><p className="mt-3 text-xs font-medium text-muted-foreground">{item.change}</p></div>; })}</section>
+            <section className="grid gap-6 xl:grid-cols-[1.35fr_.65fr]">
+                <div className="rounded-2xl border bg-card p-5 shadow-sm"><div className="flex items-center justify-between"><div><h2 className="text-lg font-semibold">Active shipment journey</h2><p className="text-sm text-muted-foreground">FISH-OM-001 · Yellowfin tuna</p></div><Badge variant="destructive">For verification</Badge></div><div className="mt-6 grid grid-cols-[auto_1fr_auto_1fr_auto] items-center">{shipmentEvents.map((event, index) => <div key={event.location} className="contents"><div className="flex flex-col items-center text-center"><span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-white"><CheckCircle2 className="h-5 w-5" /></span><p className="mt-2 text-xs font-semibold sm:text-sm">{event.location}</p><p className="hidden text-xs text-muted-foreground sm:block">{event.time}</p></div>{index < shipmentEvents.length - 1 && <div className="mx-2 h-1 rounded-full bg-primary" />}</div>)}</div><div className="mt-6 grid gap-3 rounded-xl bg-slate-50 p-4 sm:grid-cols-3"><div><p className="text-xs text-muted-foreground">Initial measured weight</p><p className="mt-1 font-semibold">1.00 kg</p></div><div><p className="text-xs text-muted-foreground">Final measured weight</p><p className="mt-1 font-semibold">0.90 kg</p></div><div><p className="text-xs text-muted-foreground">Represented shipment</p><p className="mt-1 font-semibold">90 kg (1:100)</p></div></div></div>
+                <div className="rounded-2xl border bg-slate-950 p-5 text-white shadow-sm"><div className="flex items-center justify-between"><div><h2 className="font-semibold">System connection</h2><p className="text-xs text-slate-400">Device gateway status</p></div><Radio className="h-5 w-5 text-emerald-400" /></div><div className="mt-6 flex items-center gap-4"><div className="relative"><span className="block h-3 w-3 rounded-full bg-emerald-400" /><span className="absolute inset-0 animate-ping rounded-full bg-emerald-400" /></div><div><p className="font-semibold">API connected</p><p className="text-xs text-slate-400">Last event received 8 minutes ago</p></div></div><div className="mt-6 grid grid-cols-2 gap-3"><div className="rounded-xl bg-white/5 p-3"><p className="text-xs text-slate-400">Packets today</p><p className="mt-1 text-xl font-bold">248</p></div><div className="rounded-xl bg-white/5 p-3"><p className="text-xs text-slate-400">Success rate</p><p className="mt-1 text-xl font-bold">99.2%</p></div></div><p className="mt-5 text-xs leading-5 text-slate-400">Live shipment data is received through REST endpoints connected to ESP32 devices.</p></div>
+            </section>
+            <section className="grid gap-6 xl:grid-cols-[1.15fr_.85fr]">
+                <div className="rounded-2xl border bg-card p-5 shadow-sm"><div className="flex items-center justify-between"><div><h2 className="text-lg font-semibold">Temperature trend</h2><p className="text-sm text-muted-foreground">FISH-OM-001 · °C across the journey</p></div><div className="flex items-center gap-2 text-xs text-emerald-700"><CircleDot className="h-3 w-3" /> Safe limit ≤ 5°C</div></div><div className="mt-4 h-64"><ResponsiveContainer width="100%" height="100%"><AreaChart data={deviceReadings}><defs><linearGradient id="temperature" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#2563eb" stopOpacity={0.25}/><stop offset="95%" stopColor="#2563eb" stopOpacity={0}/></linearGradient></defs><CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="label" tickLine={false} axisLine={false} fontSize={11} /><YAxis domain={[0, 6]} tickLine={false} axisLine={false} fontSize={11} /><Tooltip /><Area type="monotone" dataKey="temperature" stroke="#2563eb" strokeWidth={3} fill="url(#temperature)" /></AreaChart></ResponsiveContainer></div></div>
+                <div className="rounded-2xl border bg-card p-5 shadow-sm"><div className="flex items-center justify-between"><div><h2 className="text-lg font-semibold">Alerts requiring review</h2><p className="text-sm text-muted-foreground">Rules flag issues for human verification</p></div><button onClick={() => navigate("/admin/alerts")} className="text-sm font-semibold text-primary">View all</button></div><div className="mt-4 space-y-3">{alerts.map((alert) => <div key={alert.type} className="flex gap-3 rounded-xl border p-3"><span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-amber-50 text-amber-700"><AlertTriangle className="h-4 w-4" /></span><div className="min-w-0"><div className="flex items-center gap-2"><p className="truncate text-sm font-semibold">{alert.type}</p><Badge variant="outline">{alert.shipment}</Badge></div><p className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">{alert.message}</p><p className="mt-1 text-[11px] text-muted-foreground">{alert.time}</p></div></div>)}</div></div>
+            </section>
+            <section className="rounded-2xl border bg-card shadow-sm"><div className="flex items-center justify-between border-b p-5"><div><h2 className="text-lg font-semibold">Recent shipments</h2><p className="text-sm text-muted-foreground">Latest records from all checkpoints</p></div><Button variant="outline" onClick={() => navigate("/admin/shipments")}>View shipments <ArrowRight /></Button></div><div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead className="bg-slate-50 text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="px-5 py-3">Shipment</th><th className="px-5 py-3">Current checkpoint</th><th className="px-5 py-3">Reading</th><th className="px-5 py-3">Status</th><th className="px-5 py-3">Updated</th></tr></thead><tbody>{shipments.map((shipment) => <tr key={shipment.id} className="border-t hover:bg-slate-50"><td className="px-5 py-4"><p className="font-semibold">{shipment.id}</p><p className="text-xs text-muted-foreground">{shipment.commodity}</p></td><td className="px-5 py-4"><span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" />{shipment.checkpoint}</span></td><td className="px-5 py-4"><div className="flex gap-3 text-xs"><span className="flex items-center gap-1"><Weight className="h-3.5 w-3.5" />{shipment.prototypeWeight}</span><span className="flex items-center gap-1"><Thermometer className="h-3.5 w-3.5" />{shipment.temperature}</span></div></td><td className="px-5 py-4"><Badge variant={shipment.status === "For verification" ? "destructive" : shipment.status === "Delivered" ? "default" : "secondary"}>{shipment.status}</Badge></td><td className="px-5 py-4 text-xs text-muted-foreground">{shipment.updated}</td></tr>)}</tbody></table></div></section>
+            <div className="flex items-start gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><Activity className="mt-0.5 h-5 w-5 shrink-0" /><p><strong>Monitoring notice:</strong> This dashboard supports monitoring and human decision-making. Alerts require verification by authorized personnel.</p></div>
+        </div>
+    </AdminLayout></>;
 };
-
-function AdminDashboardPage() {
-    let navigate = useNavigate();
-
-    const [stats, setStats] = useState(adminDashboardResponse.data.stats);
-    const [recentActivities, setRecentActivies] = useState(adminDashboardResponse.data.recent_activities);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        // adminService.getAdminDashboard().then((res) => {
-        //     const status = res.data.status;
-
-        //     if (status === 'Success') {
-        //         const data = res.data.data;
-
-        //         setLoading(false);
-
-        //         if (data) {
-        //             setStats(data.stats);
-        //             setRecentActivies(data.recent_activities);
-        //         }
-        //     } else {
-        //         ToastAlert({ type: "defaultError" });
-        //     }
-        // }).catch(() => {
-        //     ToastAlert({ type: "defaultError" });
-        // });
-
-        setLoading(false);
-    }, [])
-
-    return (
-        <>
-            <Helmet>
-                <title>Dashboard | {appDetails().admin_metatitle}</title>
-            </Helmet>
-            <AdminLayout>
-                <div className="space-y-6">
-                    <section className="rounded-3xl bg-gradient-to-br from-primary via-green-700 to-green-600 p-6 text-primary-foreground shadow-sm sm:p-8">
-                        <p className="text-sm font-medium text-white/80">Admin Overview</p>
-
-                        <h1 className="mt-2 text-2xl text-white font-bold sm:text-3xl">
-                            Welcome back, Administrator
-                        </h1>
-
-                        <p className="mt-2 text-sm text-white/80 sm:text-base">
-                            {appDetails().description}
-                        </p>
-                    </section>
-
-                    {loading ?
-                        <>
-                            <Loader variant="section" title="Loading dashboard..." />
-                        </>
-                        :
-                        <>
-                            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                                {stats.map((item) => {
-                                    const Icon = iconMap[item.icon];
-
-                                    return (
-                                        <div
-                                            key={item.title}
-                                            className="rounded-2xl border border-border bg-card p-5 shadow-sm"
-                                        >
-                                            <div className="flex items-start justify-between">
-                                                <div>
-                                                    <p className="text-sm text-muted-foreground">
-                                                        {item.title}
-                                                    </p>
-
-                                                    <h3 className="mt-3 text-4xl font-bold text-primary">
-                                                        {item.value}
-                                                    </h3>
-                                                </div>
-
-                                                <div className="rounded-xl bg-accent p-3 text-primary">
-                                                    <Icon className="h-5 w-5" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </section>
-
-                            <section className="grid gap-6 xl:grid-cols-2">
-                                <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-                                    <div className="mb-5 flex items-center justify-between">
-                                        <div>
-                                            <h2 className="text-xl font-semibold text-card-foreground">
-                                                Quick Management
-                                            </h2>
-
-                                            <p className="text-sm text-muted-foreground">
-                                                Common administrative modules
-                                            </p>
-                                        </div>
-
-                                        <div className="rounded-xl bg-accent p-3 text-primary">
-                                            <BarChart3 className="h-5 w-5" />
-                                        </div>
-                                    </div>
-
-                                    <div className="grid gap-3 sm:grid-cols-2">
-                                        <QuickCard
-                                            icon={Users}
-                                            title="Users"
-                                            text="Manage accounts"
-                                            onClick={() => navigate(`/admin/users`)}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-                                    <div className="mb-5 flex items-center justify-between">
-                                        <div>
-                                            <h2 className="text-xl font-semibold text-card-foreground">
-                                                Recent Activities
-                                            </h2>
-
-                                            <p className="text-sm text-muted-foreground">
-                                                Latest system updates
-                                            </p>
-                                        </div>
-
-                                        <div className="rounded-xl bg-accent p-3 text-primary">
-                                            <CalendarDays className="h-5 w-5" />
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-4">
-                                        {recentActivities.length > 0 ?
-                                            <>
-                                                {recentActivities.map((activity, index) => (
-                                                    <div key={index} className="rounded-xl bg-muted p-4">
-                                                        <p className="text-sm font-medium text-foreground">
-                                                            {activity.description}
-                                                        </p>
-
-                                                        <p className="mt-1 text-xs text-muted-foreground">
-                                                            {activity.time}
-                                                        </p>
-                                                    </div>
-                                                ))}
-                                            </>
-                                            :
-                                            <>
-                                                <NoRecordsFound title="No Activities Found" />
-                                            </>
-                                        }
-                                    </div>
-                                </div>
-                            </section>
-                        </>
-                    }
-                </div>
-            </AdminLayout>
-        </>
-    );
-}
 
 export default AdminDashboardPage;

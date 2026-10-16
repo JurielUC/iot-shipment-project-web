@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ShieldAlert, Home, ArrowLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logos/logo.png";
+import logo from "@/assets/logos/logo-bantay-biyahe.png";
 import appDetails from "@/utils/appDetails";
 
 function UnauthorizedPage() {

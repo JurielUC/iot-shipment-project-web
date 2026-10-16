@@ -9,25 +9,18 @@ function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const toTitleCase = (value) => {
-    if (!value) return value;
-    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-  };
-
   const login = (userData) => {
-    const data = {
-      ...userData,
-      role: toTitleCase(userData.role),
-    };
-
-    setUser(data);
+    setUser(userData);
+    if (USE_MOCK_AUTH) sessionStorage.setItem("bantay-demo-session", "active");
   };
 
   const fetchUser = () => {
     setLoading(true);
 
     if (USE_MOCK_AUTH) {
-      login(userResponse.data.user);
+      if (sessionStorage.getItem("bantay-demo-session")) {
+        setUser(userResponse.data.user);
+      }
       setLoading(false);
       return;
     }
@@ -47,6 +40,7 @@ function AuthProvider({ children }) {
 
   const logout = () => {
     if (USE_MOCK_AUTH) {
+      sessionStorage.removeItem("bantay-demo-session");
       setUser(null);
       return Promise.resolve();
     }

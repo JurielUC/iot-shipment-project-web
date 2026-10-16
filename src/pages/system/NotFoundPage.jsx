@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import useAuth from "@/hooks/use-auth";
-import logo from "@/assets/logos/logo.png";
+import logo from "@/assets/logos/logo-bantay-biyahe.png";
 import appDetails from "@/utils/appDetails";
 
 function NotFoundPage() {

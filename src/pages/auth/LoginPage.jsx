@@ -21,7 +21,7 @@ import { Label } from "@/components/ui/label";
 import authService from "@/services/authService";
 import useAuth from "@/hooks/use-auth";
 
-import logo from "@/assets/logos/logo.png";
+import logo from "@/assets/logos/logo-bantay-biyahe.png";
 import { Helmet } from "react-helmet-async";
 import ToastAlert from "@/utils/toastAlert";
 
@@ -42,8 +42,8 @@ function LoginPage() {
   const [errors, setErrors] = useState([]);
 
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: "admin@bantaybiyahe.test",
+    password: "demo1234",
     remember: false,
   });
 
@@ -86,6 +86,11 @@ function LoginPage() {
     setErrors([]);
   
     if (USE_MOCK_AUTH) {
+      if (form.email !== "admin@bantaybiyahe.test" || form.password !== "demo1234") {
+        setErrors(["Use the demo credentials shown below."]);
+        setLoading(false);
+        return;
+      }
       const user = userResponse.data.user;
   
       login(user);
@@ -148,8 +153,8 @@ function LoginPage() {
           <div className="mb-8 text-center lg:hidden">
             <img
               src={logo}
-              alt="School Logo"
-              className="mx-auto mb-4 h-20 w-20 rounded-full bg-white object-cover p-1 shadow-lg"
+              alt="Bantay Biyahe logo"
+              className="mx-auto mb-4 h-24 w-24 rounded-2xl bg-slate-950 object-contain p-2 shadow-lg"
             />
 
             <h1 className="text-2xl font-bold text-primary">
@@ -164,11 +169,11 @@ function LoginPage() {
           <Card className="border-0 shadow-2xl">
             <CardHeader className="space-y-2 text-center">
               <CardTitle className="text-3xl font-bold">
-                Welcome Back
+                Operations login
               </CardTitle>
 
               <CardDescription>
-                Login to continue to your account
+                Monitor the connected three-province route
               </CardDescription>
             </CardHeader>
 
@@ -244,6 +249,10 @@ function LoginPage() {
                 >
                   {loading ? "Signing In..." : "Sign In"}
                 </Button>
+                <div className="rounded-xl border border-blue-200 bg-blue-50 p-3 text-left text-xs text-blue-900">
+                  <p className="font-semibold">Presentation account</p>
+                  <p className="mt-1">admin@bantaybiyahe.test · demo1234</p>
+                </div>
               </form>
             </CardContent>
           </Card>

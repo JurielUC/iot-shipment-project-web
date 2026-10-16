@@ -1,12 +1,11 @@
-import {
-    LayoutDashboard,
-    Users,
-    Settings,
-} from "lucide-react";
+import { BellRing, Boxes, Cpu, LayoutDashboard, ScrollText, Settings } from "lucide-react";
 
 const adminMenus = [
-    { icon: LayoutDashboard, name: "Dashboard", path: "/admin/dashboard" },
-    { icon: Users, name: "Users", path: "/admin/users" },
+    { icon: LayoutDashboard, name: "Overview", path: "/admin/dashboard" },
+    { icon: Boxes, name: "Shipments", path: "/admin/shipments" },
+    { icon: BellRing, name: "Alerts", path: "/admin/alerts" },
+    { icon: Cpu, name: "IoT Devices", path: "/admin/devices" },
+    { icon: ScrollText, name: "Reports", path: "/admin/reports" },
     { icon: Settings, name: "Settings", path: "/admin/settings" },
 ];
 

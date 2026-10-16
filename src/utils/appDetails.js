@@ -1,11 +1,11 @@
 const appDetails = () => ({
-    heading: "System Name",
-    sub_heading: "Web Application Template",
+    heading: "Bantay Biyahe",
+    sub_heading: "IoT Shipment Monitoring",
 
-    description: "Build efficient workflows, improve productivity, and deliver exceptional user experiences through scalable web applications.",
+    description: "Track food shipments, checkpoint readings, and rule-based alerts across the three-province route.",
 
-    admin_metatitle: "Admin",
-    default_metatitle: ""
+    admin_metatitle: "Bantay Biyahe",
+    default_metatitle: "Bantay Biyahe"
 });
 
 export default appDetails;
