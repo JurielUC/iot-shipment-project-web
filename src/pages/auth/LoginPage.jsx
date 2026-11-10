@@ -21,7 +21,7 @@ import { Label } from "@/components/ui/label";
 import authService from "@/services/authService";
 import useAuth from "@/hooks/use-auth";
 
-import logo from "@/assets/logos/logo-bantay-biyahe.png";
+const logo = "/dried-food-mark.svg";
 import { Helmet } from "react-helmet-async";
 import ToastAlert from "@/utils/toastAlert";
 
@@ -42,7 +42,7 @@ function LoginPage() {
   const [errors, setErrors] = useState([]);
 
   const [form, setForm] = useState({
-    email: "admin@bantaybiyahe.test",
+    email: "admin@driedfoodvision.test",
     password: "demo1234",
     remember: false,
   });
@@ -86,7 +86,7 @@ function LoginPage() {
     setErrors([]);
   
     if (USE_MOCK_AUTH) {
-      if (form.email !== "admin@bantaybiyahe.test" || form.password !== "demo1234") {
+      if (form.email !== "admin@driedfoodvision.test" || form.password !== "demo1234") {
         setErrors(["Use the demo credentials shown below."]);
         setLoading(false);
         return;
@@ -153,27 +153,27 @@ function LoginPage() {
           <div className="mb-8 text-center lg:hidden">
             <img
               src={logo}
-              alt="Bantay Biyahe logo"
+              alt="Dried Food Vision logo"
               className="mx-auto mb-4 h-24 w-24 rounded-2xl bg-slate-950 object-contain p-2 shadow-lg"
             />
 
             <h1 className="text-2xl font-bold text-primary">
-              System Name
+              Dried Food Vision
             </h1>
 
             <p className="text-sm text-muted-foreground">
-              Web Application Template
+              IoT Inspection System
             </p>
           </div>
 
           <Card className="border-0 shadow-2xl">
             <CardHeader className="space-y-2 text-center">
               <CardTitle className="text-3xl font-bold">
-                Operations login
+                Inspector login
               </CardTitle>
 
               <CardDescription>
-                Monitor the connected three-province route
+                Access the static inspection prototype
               </CardDescription>
             </CardHeader>
 
@@ -251,7 +251,7 @@ function LoginPage() {
                 </Button>
                 <div className="rounded-xl border border-blue-200 bg-blue-50 p-3 text-left text-xs text-blue-900">
                   <p className="font-semibold">Presentation account</p>
-                  <p className="mt-1">admin@bantaybiyahe.test · demo1234</p>
+                  <p className="mt-1">admin@driedfoodvision.test · demo1234</p>
                 </div>
               </form>
             </CardContent>

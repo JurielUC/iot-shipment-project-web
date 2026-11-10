@@ -11,14 +11,14 @@ function AuthProvider({ children }) {
 
   const login = (userData) => {
     setUser(userData);
-    if (USE_MOCK_AUTH) sessionStorage.setItem("bantay-demo-session", "active");
+    if (USE_MOCK_AUTH) sessionStorage.setItem("dried-food-demo-session", "active");
   };
 
   const fetchUser = () => {
     setLoading(true);
 
     if (USE_MOCK_AUTH) {
-      if (sessionStorage.getItem("bantay-demo-session")) {
+      if (sessionStorage.getItem("dried-food-demo-session")) {
         setUser(userResponse.data.user);
       }
       setLoading(false);
@@ -40,7 +40,7 @@ function AuthProvider({ children }) {
 
   const logout = () => {
     if (USE_MOCK_AUTH) {
-      sessionStorage.removeItem("bantay-demo-session");
+      sessionStorage.removeItem("dried-food-demo-session");
       setUser(null);
       return Promise.resolve();
     }

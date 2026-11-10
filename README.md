@@ -1,98 +1,44 @@
-# Bantay Biyahe
+# Dried Food Vision
 
-Bantay Biyahe is a React web application for monitoring food shipments across Occidental Mindoro, Batangas, and Nueva Ecija. It displays checkpoint activity, weight and temperature readings, IoT device status, alerts, and reports.
+A static React/Vite prototype for the proposed **IoT-Based Intelligent Inspection and Classification System for Selected Dried Food Products**.
 
-The current version uses static demonstration data and a presentation account. It is ready to be connected to the planned REST API and ESP32 devices later.
+The interface demonstrates the intended ESP32-CAM workflow for five image-classification categories:
 
-## Requirements
+- Dried fish (Daing / Tuyo)
+- Dried cassava products (exact product form still to be confirmed)
+- Dried squid (Pusit)
+- Banana chips
+- Dried shrimp (Hibe)
 
-Install the following before running the application:
+## Static prototype scope
 
-- [Node.js](https://nodejs.org/) 20 or newer
-- npm, which is included with Node.js
+The current app uses local mock records and a sample SVG camera capture. Camera capture, image upload, Machine Learning inference, Flask, and SQLite are not connected yet. Dashboard values are clearly presented as demo values and must not be reported as research results.
 
-## Installation
+The prototype performs product-identification presentation only. It does not assess quality, freshness, moisture, contamination, or food safety, and it does not sort or monitor products during transport.
 
-Open a terminal in the project directory and install the dependencies:
+## Run locally
 
 ```bash
 npm install
-```
-
-If the dependencies have already been installed, this step can be skipped.
-
-## Run the application
-
-Start the Vite development server:
-
-```bash
 npm run dev
 ```
 
-Open the URL shown in the terminal. The default address is usually:
+Demo login:
 
 ```text
-http://localhost:5173
+admin@driedfoodvision.test
+demo1234
 ```
 
-Keep the terminal open while using the application. Press `Ctrl+C` to stop the development server.
+## Available screens
 
-### Windows PowerShell note
+- Inspection overview
+- New inspection static capture/upload simulation
+- Inspection history
+- Five-category summary
+- ESP32-CAM and proposed MobileNetV2 system view
+- Demo confidence-threshold settings
 
-If PowerShell prevents `npm.ps1` from running because of its execution policy, use the Windows command executable instead:
+## Future integration
 
-```powershell
-npm.cmd install
-npm.cmd run dev
-```
-
-## Presentation account
-
-Use this static account on the login page:
-
-```text
-Email:    admin@bantaybiyahe.test
-Password: demo1234
-```
-
-The login is stored only for the current browser tab. Logging out or closing the tab clears the demonstration session.
-
-## Production build
-
-Create an optimized build:
-
-```bash
-npm run build
-```
-
-The generated files will be saved in the `dist` directory. To preview that build locally:
-
-```bash
-npm run preview
-```
-
-## Available commands
-
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the local development server |
-| `npm run build` | Generate the production build |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Check JavaScript and JSX source files |
-
-## Current application sections
-
-- Operations overview
-- Shipment monitoring
-- Rule-based alerts
-- IoT device status
-- Reports
-- Alert threshold settings
-
-## Current data and API status
-
-Shipment records, sensor readings, alerts, devices, and reports currently use demonstration data stored under `src/data/mock`.
-
-The existing service layer under `src/services` can be connected to the central REST API when the backend is available. The planned integration uses JSON events from ESP32 devices and a shared Shipment ID across all three checkpoints.
-
-Do not treat the static presentation login as production authentication. Real deployment should use the backend authentication, authorization, validation, and audit logging described in the project requirements.
+The proposal recommends an ESP32-CAM with OV2640, a Python/Flask backend, OpenCV preprocessing, TensorFlow/Keras with MobileNetV2 transfer learning, and SQLite record storage. Those components should replace the fixtures in `src/data/mock/inspectionData.js` when implementation begins.

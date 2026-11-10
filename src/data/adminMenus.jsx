@@ -1,11 +1,11 @@
-import { BellRing, Boxes, Cpu, LayoutDashboard, ScrollText, Settings } from "lucide-react";
+import { Camera, ChartNoAxesCombined, Cpu, History, LayoutDashboard, Settings } from "lucide-react";
 
 const adminMenus = [
     { icon: LayoutDashboard, name: "Overview", path: "/admin/dashboard" },
-    { icon: Boxes, name: "Shipments", path: "/admin/shipments" },
-    { icon: BellRing, name: "Alerts", path: "/admin/alerts" },
-    { icon: Cpu, name: "IoT Devices", path: "/admin/devices" },
-    { icon: ScrollText, name: "Reports", path: "/admin/reports" },
+    { icon: Camera, name: "New Inspection", path: "/admin/inspect" },
+    { icon: History, name: "Inspection History", path: "/admin/history" },
+    { icon: ChartNoAxesCombined, name: "Category Summary", path: "/admin/categories" },
+    { icon: Cpu, name: "Device & Model", path: "/admin/system" },
     { icon: Settings, name: "Settings", path: "/admin/settings" },
 ];
 

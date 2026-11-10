@@ -1,4 +1,4 @@
-import logo from "@/assets/logos/logo-bantay-biyahe.png";
+const logo = "/dried-food-mark.svg";
 import appDetails from "@/utils/appDetails";
 
 function LoadingScreen({

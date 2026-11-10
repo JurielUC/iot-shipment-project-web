@@ -1,11 +1,11 @@
 const appDetails = () => ({
-    heading: "Bantay Biyahe",
-    sub_heading: "IoT Shipment Monitoring",
+    heading: "Dried Food Vision",
+    sub_heading: "IoT Inspection System",
 
-    description: "Track food shipments, checkpoint readings, and rule-based alerts across the three-province route.",
+    description: "Camera-based identification for selected dried food products.",
 
-    admin_metatitle: "Bantay Biyahe",
-    default_metatitle: "Bantay Biyahe"
+    admin_metatitle: "Dried Food Vision",
+    default_metatitle: "Dried Food Vision"
 });
 
 export default appDetails;

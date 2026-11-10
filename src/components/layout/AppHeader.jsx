@@ -45,11 +45,11 @@ function AppHeader({
 
         <div>
           <h1 className="text-base font-semibold text-foreground sm:text-lg">
-            Shipment Control Center
+            Intelligent Inspection Center
           </h1>
 
           <p className="hidden text-sm text-muted-foreground sm:block">
-            Connected route operations · {user.first_name} account
+            Controlled tabletop identification · {user.first_name} account
           </p>
         </div>
       </div>

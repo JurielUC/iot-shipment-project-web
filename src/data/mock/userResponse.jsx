@@ -8,7 +8,7 @@ const userResponse = {
         middle_name: "Umali",
         last_name: "Administrator",
         suffix: "",
-        email: "admin@bantaybiyahe.test",
+        email: "admin@driedfoodvision.test",
         username: "",
         image_url: "",
         role: "Admin",

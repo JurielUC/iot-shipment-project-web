@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ShieldAlert, Home, ArrowLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logos/logo-bantay-biyahe.png";
+const logo = "/dried-food-mark.svg";
 import appDetails from "@/utils/appDetails";
 
 function UnauthorizedPage() {

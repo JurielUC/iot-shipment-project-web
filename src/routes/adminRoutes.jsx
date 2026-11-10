@@ -12,7 +12,7 @@ const adminRoutes = [
       </RoleRoute>
     ),
   },
-  ...["shipments", "alerts", "devices", "reports", "settings"].map((type) => ({
+  ...["inspect", "history", "categories", "system", "settings"].map((type) => ({
     path: `/admin/${type}`,
     element: <RoleRoute allow={["Admin"]}><OperationsPage type={type} /></RoleRoute>,
   })),

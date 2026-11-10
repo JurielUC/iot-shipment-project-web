@@ -5,7 +5,7 @@ import {
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import Logo from "@/assets/logos/logo-bantay-biyahe.png";
+const Logo = "/dried-food-mark.svg";
 
 import useAuth from "@/hooks/use-auth";
 import ToastAlert from "@/utils/toastAlert";

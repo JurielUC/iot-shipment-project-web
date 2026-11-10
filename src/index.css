@@ -6,34 +6,34 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Bantay Biyahe — coastal logistics theme */
-  --background: #f5f8fc;
-  --foreground: #10233f;
+  /* Dried Food Vision — warm laboratory theme */
+  --background: #f7f5ef;
+  --foreground: #1a2d26;
 
   --card: #ffffff;
-  --card-foreground: #10233f;
+  --card-foreground: #1a2d26;
 
   --popover: #ffffff;
-  --popover-foreground: #10233f;
+  --popover-foreground: #1a2d26;
 
-  --primary: #075ea8;
+  --primary: #2f6b55;
   --primary-foreground: #ffffff;
 
-  --secondary: #e7f5ff;
-  --secondary-foreground: #06477e;
+  --secondary: #e5eee8;
+  --secondary-foreground: #214d3d;
 
-  --muted: #edf3f8;
-  --muted-foreground: #5c6f86;
+  --muted: #efede6;
+  --muted-foreground: #68756f;
 
-  --accent: #d9f0ff;
-  --accent-foreground: #073d70;
+  --accent: #e9efe8;
+  --accent-foreground: #204b3b;
 
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
 
-  --border: #d9e3ee;
-  --input: #bdccdc;
-  --ring: #0b93e8;
+  --border: #dedbd1;
+  --input: #c9c5b9;
+  --ring: #4d8c73;
 
   --success: #15946b;
   --warning: #f5a400;

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%"><stop stop-color="#f8efdc"/><stop offset="1" stop-color="#d6c39f"/></radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <rect x="42" y="38" width="716" height="484" rx="20" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-dasharray="10 10"/>
+  <g filter="url(#shadow)" fill="#bd7c35" stroke="#714318" stroke-width="4">
+    <path d="M175 312c37-58 103-83 181-67-35 76-101 111-186 92z"/>
+    <path d="M317 238c54-53 126-61 195-24-56 59-129 74-202 42z"/>
+    <path d="M424 326c51-52 120-62 188-29-51 66-120 86-197 48z"/>
+    <path d="M255 387c52-47 116-52 178-18-48 57-112 70-181 36z"/>
+  </g>
+  <g fill="none" stroke="#efd08c" stroke-width="7" stroke-linecap="round">
+    <path d="M201 311c49-31 94-42 133-35"/><path d="M343 238c50-22 98-26 144-12"/><path d="M451 329c48-22 91-27 132-17"/><path d="M280 386c43-18 85-20 125-7"/>
+  </g>
+  <text x="66" y="82" fill="#5b4b33" font-family="Arial,sans-serif" font-size="20" font-weight="700">ESP32-CAM · TABLETOP CAPTURE</text>
+</svg>
